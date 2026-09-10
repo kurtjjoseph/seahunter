@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Void Harvest — Dual Stick Ops</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">✦</span><span>VOID<br>HARVEST</span></a>
+      <div class="sector"><span class="eyebrow">CURRENT SECTOR</span><strong>01 <i></i> DUSTWALL</strong><span class="unlock">AREA UNLOCKS AT LV. 4</span></div>
+      <nav><button class="nav active" data-tab="mission">Mission</button><button class="nav" data-tab="tree">Skill Tree</button><button class="nav" data-tab="shop">Trading Post</button></nav>
+      <div class="player"><div class="rank">03</div><div><span class="eyebrow">SCAVENGER</span><strong>NYX-04</strong></div><button class="gear" aria-label="Settings">⚙</button></div>
+    </header>
+
+    <section id="mission" class="view active-view">
+      <div class="mission-grid">
+        <aside class="left-panel panel">
+          <div class="panel-head"><span>LOADOUT</span><button class="dots">•••</button></div>
+          <div class="pilot-card"><div class="portrait">N</div><div><strong>NYX-04</strong><small>FIELD SCAVENGER</small></div><div class="level-badge">LVL <b id="level">3</b></div></div>
+          <div class="meter-block"><div class="meter-label"><span>VITALS</span><b id="healthText">100 / 100</b></div><div class="bar health"><i id="healthBar"></i></div></div>
+          <div class="meter-block"><div class="meter-label"><span>STAMINA</span><b id="staminaText">72 / 100</b></div><div class="bar stamina"><i id="staminaBar"></i></div></div>
+          <div class="pack"><div><span class="eyebrow">CARGO HOLD</span><strong id="cargoText">18 / 40</strong></div><div class="cargo-bar"><i id="cargoBar"></i></div></div>
+          <div class="weapon-title">EQUIPPED WEAPONS <span>2/2</span></div>
+          <button class="weapon-card selected" id="pulseWeapon"><span class="weapon-icon pulse">⌁</span><span><b>PULSE CARBINE</b><small>LVL 2 • ARC DAMAGE</small></span><em>1</em></button>
+          <button class="weapon-card" id="scatterWeapon"><span class="weapon-icon scatter">✥</span><span><b>SCATTER CANNON</b><small>LVL 1 • KINETIC</small></span><em>2</em></button>
+          <div class="weapon-stat"><span>POWER</span><div class="mini-bar"><i style="width:62%"></i></div><b id="powerValue">62</b></div>
+          <div class="weapon-stat"><span>FIRE RATE</span><div class="mini-bar cyan"><i style="width:52%"></i></div><b id="rateValue">5.2</b></div>
+        </aside>
+
+        <section class="arena panel">
+          <div class="arena-head"><div><span class="eyebrow">LIVE EXPEDITION</span><strong>ASHEN TRENCH</strong></div><div class="online"><i></i> 2 SQUADMATES ONLINE</div></div>
+          <div class="canvas-wrap"><canvas id="gameCanvas" width="900" height="520"></canvas><div class="objective"><span>OBJECTIVE</span><b>EXTRACT BIO-SCRAP</b><small><i id="objectiveProgress"></i></small></div><div class="controls-tip"><kbd>WASD</kbd> MOVE &nbsp; <kbd>CLICK</kbd> FIRE &nbsp; <kbd>SPACE</kbd> DASH</div></div>
+          <div class="arena-foot"><div><span>THREAT LEVEL</span><b><i></i><i></i><i></i><i class="dim"></i><i class="dim"></i></b></div><div class="next-wave">NEXT WAVE <strong id="waveTimer">00:24</strong></div><button id="extractBtn">EXTRACT <span>↗</span></button></div>
+        </section>
+
+        <aside class="right-panel">
+          <section class="panel resources"><div class="panel-head"><span>FIELD RESOURCES</span><button class="dots">•••</button></div>
+            <div class="currency-list"><div><span class="resource ore">◆</span><span><b>VOID ORE</b><small>MINED CURRENCY</small></span><strong id="ore">248</strong></div><div><span class="resource scrap">✣</span><span><b>BIO-SCRAP</b><small>ENEMY DROPS</small></span><strong id="scrap">86</strong></div><div><span class="resource core">✦</span><span><b>RELIC CORE</b><small>PREMIUM</small></span><strong id="cores">12</strong></div></div>
+            <button class="trade" data-tab="shop">OPEN TRADING POST <span>→</span></button>
+          </section>
+          <section class="panel intel"><div class="panel-head"><span>SECTOR INTEL</span><span class="tag">NEW</span></div><div class="intel-content"><div class="radar">⌖</div><div><strong>Crystal Fields</strong><p>Rich vein signatures detected beyond the trench.</p><button data-tab="tree">VIEW UNLOCKS →</button></div></div></section>
+          <section class="panel upgrades"><div class="panel-head"><span>ACTIVE AUGMENTS</span><span>3 / 8</span></div><div class="augment"><span>↯</span><div><b>Overcharged Capacitors</b><small>+15% fire rate</small></div></div><div class="augment"><span>◈</span><div><b>Reinforced Plating</b><small>+20 max vitality</small></div></div></section>
+        </aside>
+      </div>
+    </section>
+
+    <section id="tree" class="view"><div class="tree-page panel"><div class="page-title"><div><span class="eyebrow">PROGRESSION MATRIX</span><h1>Skill Tree</h1><p>Spend resources to evolve your fighting style. Connected nodes unlock deeper paths.</p></div><div class="tree-wallet"><span>◆ <b id="treeOre">248</b></span><span>✣ <b id="treeScrap">86</b></span></div></div><div class="tree-layout"><aside><b>PATHS</b><button class="path active">◉ Survivor</button><button class="path">⌁ Pulse Arsenal</button><button class="path">✥ Scatter Arsenal</button><button class="path">◇ Extraction</button></aside><div class="nodes" id="nodes"></div><article class="node-detail"><span class="eyebrow">SELECT A NODE</span><h2 id="nodeName">Field Conditioning</h2><p id="nodeDescription">Increase stamina capacity and recover faster after a dash.</p><div class="cost"><span>◆</span><b id="nodeCost">40</b> Void Ore</div><button id="unlockBtn">UNLOCK AUGMENT</button><small>Some nodes require a prior discovery.</small></article></div></div></section>
+
+    <section id="shop" class="view"><div class="shop-page"><div class="shop-hero panel"><div><span class="eyebrow">THE DUSTWALL EXCHANGE</span><h1>Trading Post</h1><p>Refine your harvest, trade enemy salvage, and acquire rare field technology.</p></div><div class="shopkeeper"><div class="shop-face">◉</div><span>MERCHANT<br><b>YARA VOSS</b></span></div></div><div class="shop-grid"><section class="panel shop-section"><div class="panel-head"><span>REFINERY</span><span class="tag">BEST VALUE</span></div><h2>Convert your salvage</h2><p>Process common Bio-Scrap into compact, high-value Relic Cores.</p><div class="conversion"><div>✣ <b>25</b><small>BIO-SCRAP</small></div><span>→</span><div>✦ <b>1</b><small>RELIC CORE</small></div></div><button class="primary" id="refineBtn">REFINE BATCH</button></section><section class="panel shop-section"><div class="panel-head"><span>ELITE STOCK</span><span class="refresh">REFRESH 04:21</span></div><div class="elite-item"><div class="elite-icon">✧</div><div><span class="tag purple">ELITE</span><h2>Graviton Lattice</h2><p>Projectiles slow targets on hit.</p><button class="buy" data-cost="4">BUY • ✦ 4</button></div></div></section><section class="panel shop-section sell"><div class="panel-head"><span>SALVAGE COUNTER</span></div><h2>Sell cargo</h2><p>Convert mined ore to field credits for immediate upgrades.</p><div class="sell-row"><span>◆ Void Ore</span><b>× 10</b><button id="sellBtn">SELL +18</button></div></section></div></div></section>
+    <div id="toast" class="toast"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
